@@ -1,18 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import { BlogContext } from "../../App";
+import { useBlogContext } from "../../custom-hooks/useBlogContext";
 import Results from "./results/Results";
 import SearchPosts from "./search-posts/SearchPosts";
+import ThemeToggleBtn from "./theme-toggle-btn/ThemeToggleBtn";
 
 export default function Header() {
-  const { onClearPosts } = useContext(BlogContext);
-  const [isFakeDark, setIsFakeDark] = useState(false);
-
-  useEffect(
-    function () {
-      document.documentElement.classList.toggle("fake-dark-mode");
-    },
-    [isFakeDark]
-  );
+  const { onClearPosts } = useBlogContext();
 
   return (
     <header>
@@ -24,12 +16,7 @@ export default function Header() {
         <Results />
         <SearchPosts />
         <button onClick={onClearPosts}>Clear posts</button>
-        <button
-          onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
-          className="btn-fake-dark-mode"
-        >
-          {isFakeDark ? "☀️" : "🌙"}
-        </button>
+        <ThemeToggleBtn />
       </div>
     </header>
   );

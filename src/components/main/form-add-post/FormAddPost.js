@@ -1,8 +1,8 @@
-import { useState, useContext } from "react";
-import { BlogContext } from "../../../App";
+import { useState } from "react";
+import { useBlogContext } from "../../../custom-hooks/useBlogContext";
 
 export default function FormAddPost() {
-  const { onAddPost } = useContext(BlogContext);
+  const { onAddPost } = useBlogContext();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 

@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { BlogContext } from "../../../../App";
+import { useBlogContext } from "../../../../custom-hooks/useBlogContext";
 
 export default function List() {
-  const { posts } = useContext(BlogContext);
+  const { posts } = useBlogContext();
 
   return (
     <ul>

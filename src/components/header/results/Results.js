@@ -1,7 +1,6 @@
-import { useContext } from "react";
-import { BlogContext } from "../../../App";
+import { useBlogContext } from "../../../custom-hooks/useBlogContext";
 
 export default function Results() {
-  const { posts } = useContext(BlogContext);
+  const { posts } = useBlogContext();
   return <p>🚀 {posts.length} atomic posts found</p>;
 }

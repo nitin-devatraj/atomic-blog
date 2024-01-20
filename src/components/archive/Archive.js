@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
-import { BlogContext } from "../../App";
+import { useState } from "react";
+import { useBlogContext } from "../../custom-hooks/useBlogContext";
 import { createRandomPost } from "../../utilities/utilities";
 
 export default function Archive() {
-  const { onAddPost } = useContext(BlogContext);
+  const { onAddPost } = useBlogContext();
 
   const [showArchive, setShowArchive] = useState(false);
   const [posts] = useState(() =>

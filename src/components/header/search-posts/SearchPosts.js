@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { BlogContext } from "../../../App";
+import { useBlogContext } from "../../../custom-hooks/useBlogContext";
 
 export default function SearchPosts() {
-  const { searchQuery, setSearchQuery } = useContext(BlogContext);
+  const { searchQuery, setSearchQuery } = useBlogContext();
   return (
     <input
       value={searchQuery}
