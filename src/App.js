@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import Archive from "./components/archive/Archive";
 import Footer from "./components/footer/Footer";
 import { createRandomPost } from "./utilities/utilities";
 
-function App() {
+export const BlogContext = createContext();
+
+export default function App() {
   const [posts, setPosts] = useState(() =>
     Array.from({ length: 30 }, () => createRandomPost())
   );
@@ -29,18 +31,21 @@ function App() {
   }
 
   return (
-    <section>
-      <Header
-        posts={searchedPosts}
-        onClearPosts={handleClearPosts}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
-      <Main posts={searchedPosts} onAddPost={handleAddPost} />
-      <Archive onAddPost={handleAddPost} />
-      <Footer />
-    </section>
+    <BlogContext.Provider
+      value={{
+        posts: searchedPosts,
+        onAddPost: handleAddPost,
+        onClearPosts: handleClearPosts,
+        searchQuery,
+        setSearchQuery,
+      }}
+    >
+      <section>
+        <Header />
+        <Main />
+        <Archive />
+        <Footer />
+      </section>
+    </BlogContext.Provider>
   );
 }
-
-export default App;

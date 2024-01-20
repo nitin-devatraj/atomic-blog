@@ -1,13 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { BlogContext } from "../../App";
 import Results from "./results/Results";
 import SearchPosts from "./search-posts/SearchPosts";
 
-export default function Header({
-  posts,
-  onClearPosts,
-  searchQuery,
-  setSearchQuery,
-}) {
+export default function Header() {
+  const { onClearPosts } = useContext(BlogContext);
   const [isFakeDark, setIsFakeDark] = useState(false);
 
   useEffect(
@@ -24,11 +21,8 @@ export default function Header({
         The Atomic Blog
       </h1>
       <div>
-        <Results posts={posts} />
-        <SearchPosts
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
+        <Results />
+        <SearchPosts />
         <button onClick={onClearPosts}>Clear posts</button>
         <button
           onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}

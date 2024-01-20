@@ -1,4 +1,8 @@
-export default function SearchPosts({ searchQuery, setSearchQuery }) {
+import { useContext } from "react";
+import { BlogContext } from "../../../App";
+
+export default function SearchPosts() {
+  const { searchQuery, setSearchQuery } = useContext(BlogContext);
   return (
     <input
       value={searchQuery}

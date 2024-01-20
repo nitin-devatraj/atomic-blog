@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { BlogContext } from "../../App";
 import { createRandomPost } from "../../utilities/utilities";
 
-export default function Archive({ onAddPost }) {
+export default function Archive() {
+  const { onAddPost } = useContext(BlogContext);
+
   const [showArchive, setShowArchive] = useState(false);
   const [posts] = useState(() =>
     Array.from({ length: 15 }, () => createRandomPost())

@@ -1,4 +1,9 @@
-export default function List({ posts }) {
+import { useContext } from "react";
+import { BlogContext } from "../../../../App";
+
+export default function List() {
+  const { posts } = useContext(BlogContext);
+
   return (
     <ul>
       {posts.map((post, i) => (
